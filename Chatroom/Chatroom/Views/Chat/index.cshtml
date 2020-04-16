@@ -1,4 +1,38 @@
 @{
-    ViewData["Title"] = "Inloggen";
-    Layout = "_LoginScreen";
+    ViewData["Title"] = "Hoofdscherm";
+    Layout = "_Mainscreen";
 }
+
+<div class="side-column">
+    <div class="user-details">
+        <img class="image-current-user" src="@ViewData["User-image"]" alt=""/>
+        <div class="right-side">
+            <h3 class="username-current-user">@ViewData["User-name"]</h3>
+            <p class="email-current-user">@ViewData["User-email"]</p>
+            <p class="status-current-user">@ViewData["User-status"]</p>
+        </div>
+    </div>
+    <div class="top-config-bar"></div>
+    <div class="chatroom-list"></div>
+    <div class="bottom-config-bar"></div>
+</div>
+<div class="main-content">
+    <div class="chatroom-details"></div>
+    <div class="chatroom-top-bar">
+        <button class="chatroom-info-button no-style-button"></button>
+        <h1>@ViewData["Chatroom-name"]</h1>
+    </div>
+    <div class="chatroom-message-area"></div>
+    <div class="chatroom-construct-area">
+        <button class="no-style-button"></button>
+        <button class="no-style-button"></button>
+        <textarea></textarea>
+        <button class="send-message-button no-style-button"></button>
+    </div>
+</div>
+<div class="ofscreen-areas">
+    <div class="create-chatroom-area"></div>
+    <div class="join-chatroom-area"></div>
+    <div class="edit-personal-details-area"></div>
+    <div class="leave-chatroom-area"></div>
+</div>
