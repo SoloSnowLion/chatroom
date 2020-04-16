@@ -1,8 +1,24 @@
 @{
     ViewData["Title"] = "Inloggen";
+    Layout = "_LoginScreen";
 }
 
-<div>
-    <h1>Hallo</h1>
-    <h3>TotalData: @ViewData["TotalData"]</h3>
+<div class="main-content">
+    <div class="center-div">
+        <h1>Inloggen</h1>
+        <div>
+            <form method="post">
+                <label for="inputUsername">Gebruikersnaam:</label>
+                <input type="text" id="inputUsername" class="user-input" name="user-id"/>
+                <label for="inputPassword">Wachtwoord:</label>
+                <input type="password" id="inputPassword" class="user-input" name="user-pass"/>
+                <p class="external-links">
+                    <a class="single-line-link" href="https://www.google.com" target="_blank">Een account maken...</a><br/>
+                    <a class="single-line-link" href="https://www.google.com" target="_blank">Ik ben mijn wachtwoord vergeten...</a><br/>
+                    <a class="single-line-link" href="https://www.google.com" target="_blank">Ik kan niet inloggen...</a>
+                </p>
+                <input type="submit"/>
+            </form>
+        </div>
+    </div>
 </div>
