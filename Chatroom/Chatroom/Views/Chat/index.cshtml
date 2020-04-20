@@ -5,29 +5,133 @@
 
 <div class="side-column">
     <div class="user-details">
-        <img class="image-current-user" src="@ViewData["User-image"]" alt=""/>
+        <img class="image-current-user" src="~/img/placeholders/user.svg" alt=""/>
         <div class="right-side">
-            <h3 class="username-current-user">@ViewData["User-name"]</h3>
-            <p class="email-current-user">@ViewData["User-email"]</p>
-            <p class="status-current-user">@ViewData["User-status"]</p>
+            <h3 class="username-current-user">SoloSnowLion</h3>
+            <p class="email-current-user">435490@student.fontys.nl</p>
+            <p class="status-current-user">Buiten bereik van verantwoordelijkheden en op kamer temperatuur houden.</p>
         </div>
+        <div class="clearfix"></div>
     </div>
-    <div class="top-config-bar"></div>
-    <div class="chatroom-list"></div>
-    <div class="bottom-config-bar"></div>
+    <div class="top-config-bar">
+        <button class="no-style-button enter-chatroom">
+            <img src="~/img/placeholders/login.svg"/><span>Chatroom binnengaan</span>
+        </button>
+    </div>
+    <div class="chatroom-list">
+        <ul>
+            <li class="chatroom-list-item">
+                <img class="chatroom-list-image" alt="" src="~/img/placeholders/group.svg"/>
+                <div class="chatroom-flexbox">
+                    <h3>Chatroomnaam</h3>
+                    <p>Dit is een preview van een bericht...</p>
+                </div>
+            </li>
+            <li class="chatroom-list-item">
+                <img class="chatroom-list-image" alt="" src="~/img/placeholders/group.svg"/>
+                <div class="chatroom-flexbox">
+                    <h3>Chatroomnaam</h3>
+                    <p>Dit is een preview van een bericht...</p>
+                </div>
+            </li>
+            <li class="chatroom-list-item">
+                <img class="chatroom-list-image" alt="" src="~/img/placeholders/group.svg"/>
+                <div class="chatroom-flexbox">
+                    <h3>Chatroomnaam</h3>
+                    <p>Dit is een preview van een bericht...</p>
+                </div>
+            </li>
+            <li class="chatroom-list-item">
+                <img class="chatroom-list-image" alt="" src="~/img/placeholders/group.svg"/>
+                <div class="chatroom-flexbox">
+                    <h3>Chatroomnaam</h3>
+                    <p>Dit is een preview van een bericht...</p>
+                </div>
+            </li>
+            <li class="chatroom-list-item">
+                <img class="chatroom-list-image" alt="" src="~/img/placeholders/group.svg"/>
+                <div class="chatroom-flexbox">
+                    <h3>Chatroomnaam</h3>
+                    <p>Dit is een preview van een bericht...</p>
+                </div>
+            </li>
+            <li class="chatroom-list-item">
+                <img class="chatroom-list-image" alt="" src="~/img/placeholders/group.svg"/>
+                <div class="chatroom-flexbox">
+                    <h3>Chatroomnaam</h3>
+                    <p>Dit is een preview van een bericht...</p>
+                </div>
+            </li>
+            <li class="chatroom-list-item">
+                <img class="chatroom-list-image" alt="" src="~/img/placeholders/group.svg"/>
+                <div class="chatroom-flexbox">
+                    <h3>Chatroomnaam</h3>
+                    <p>Dit is een preview van een bericht...</p>
+                </div>
+            </li>
+            <li class="chatroom-list-item">
+                <img class="chatroom-list-image" alt="" src="~/img/placeholders/group.svg"/>
+                <div class="chatroom-flexbox">
+                    <h3>Chatroomnaam</h3>
+                    <p>Dit is een preview van een bericht...</p>
+                </div>
+            </li>
+            <li class="chatroom-list-item">
+                <img class="chatroom-list-image" alt="" src="~/img/placeholders/group.svg"/>
+                <div class="chatroom-flexbox">
+                    <h3>Chatroomnaam</h3>
+                    <p>Dit is een preview van een bericht...</p>
+                </div>
+            </li>
+            <li class="chatroom-such-empty">
+                <img src="~/img/placeholders/such-empty-2.svg"/>
+                <p>Wow, such empty</p>
+            </li>
+        </ul>
+    </div>
+    <div class="bottom-config-bar">
+        <button class="no-style-button settings-button" title="Instellingen">
+            <img src="~/img/placeholders/gear.svg" alt="Instellingen knop"/>
+        </button>
+        <button class="no-style-button logout-button" title="Uitloggen">
+            <img src="~/img/placeholders/logout.svg" alt="Uitloggen knop"/>
+        </button>
+        <button class="no-style-button add-room-button" title="Chatroom aanmaken">
+            <img src="~/img/placeholders/add.svg" alt="Chatroom toevoegen"/><span>Chatroom toevoegen</span>
+        </button>
+    </div>
 </div>
 <div class="main-content">
     <div class="chatroom-details"></div>
     <div class="chatroom-top-bar">
-        <button class="chatroom-info-button no-style-button"></button>
-        <h1>@ViewData["Chatroom-name"]</h1>
+        <button class="chatroom-info-button no-style-button">
+            <img src="~/img/placeholders/more.svg" alt="Chatroom instellingen knop"/>
+        </button>
+        <h1>Voorbeeld naam</h1>
     </div>
-    <div class="chatroom-message-area"></div>
+    <div class="chatroom-message-area">
+        <ul>
+            <li class="placeholder-message current-user message-bubble"></li>
+            <div class="clearfix"></div>
+            <li class="placeholder-message message-bubble"></li>
+            <li class="placeholder-message message-bubble"></li>
+            <li class="placeholder-message current-user message-bubble"></li>
+            <div class="clearfix"></div>
+            <li class="placeholder-message message-bubble"></li>
+            <li class="placeholder-message current-user message-bubble"></li>
+            <div class="clearfix"></div>
+            <li class="placeholder-message message-bubble"></li>
+            <li class="placeholder-message current-user message-bubble"></li>
+            <div class="clearfix"></div>
+        </ul>
+    </div>
     <div class="chatroom-construct-area">
-        <button class="no-style-button"></button>
-        <button class="no-style-button"></button>
-        <textarea></textarea>
-        <button class="send-message-button no-style-button"></button>
+        <button class="no-style-button filler-button"></button>
+        <button class="no-style-button filler-button"></button>
+        <textarea class="message-area"></textarea>
+        <button class="send-message-button no-style-button">
+            <img alt="Versturen knop" src="~/img/placeholders/send-button.svg"/>
+        </button>
     </div>
 </div>
 <div class="ofscreen-areas">

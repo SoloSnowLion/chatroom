@@ -73,3 +73,54 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+.clearfix::before {
+  content: " ";
+  display: table;
+}
+
+.clearfix::after {
+  content: " ";
+  clear: both;
+  display: table;
+}
+
+.no-style-button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+p, span, button, textarea, input {
+  font-size: 14px;
+}
+
+h1 {
+  font-size: 37px;
+}
+
+h2 {
+  font-size: 33px;
+}
+
+h3 {
+  font-size: 29px;
+}
+
+h4 {
+  font-size: 25px;
+}
+
+h5 {
+  font-size: 21px;
+}
+
+h6 {
+  font-size: 17px;
+}
