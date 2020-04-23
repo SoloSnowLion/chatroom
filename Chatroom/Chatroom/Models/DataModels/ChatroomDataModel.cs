@@ -9,7 +9,9 @@ namespace Chatroom.Models.DataModels
         public int MaxMembers { get; }
         public string ProfilePicture { get; }
         public int Administrator { get; }
-        
-        public ChatroomDataModel(){}
+
+        public ChatroomDataModel()
+        {
+        }
     }
 }

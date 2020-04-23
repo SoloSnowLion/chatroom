@@ -1,3 +1,6 @@
+@using ChatroomContainerViewModel = Chatroom.Models.ViewModels.ChatroomContainerViewModel
+@using Chatroom.Models.ViewModels
+@model ChatroomContainerViewModel;
 @{
     ViewData["Title"] = "Hoofdscherm";
     Layout = "_Mainscreen";
@@ -7,7 +10,7 @@
     <div class="user-details">
         <img class="image-current-user" src="~/img/placeholders/user.svg" alt=""/>
         <div class="right-side">
-            <h3 class="username-current-user">@ViewData["Rooms"]</h3>
+            <h3 class="username-current-user">SoloSnowLion</h3>
             <p class="email-current-user">435490@student.fontys.nl</p>
             <p class="status-current-user">Buiten bereik van verantwoordelijkheden en op kamer temperatuur houden.</p>
         </div>
@@ -27,62 +30,22 @@
                     <p>Dit is een preview van een bericht...</p>
                 </div>
             </li>
-            <li class="chatroom-list-item">
-                <img class="chatroom-list-image" alt="" src="~/img/placeholders/group.svg"/>
-                <div class="chatroom-flexbox">
-                    <h3>Chatroomnaam</h3>
-                    <p>Dit is een preview van een bericht...</p>
-                </div>
-            </li>
-            <li class="chatroom-list-item">
-                <img class="chatroom-list-image" alt="" src="~/img/placeholders/group.svg"/>
-                <div class="chatroom-flexbox">
-                    <h3>Chatroomnaam</h3>
-                    <p>Dit is een preview van een bericht...</p>
-                </div>
-            </li>
-            <li class="chatroom-list-item">
-                <img class="chatroom-list-image" alt="" src="~/img/placeholders/group.svg"/>
-                <div class="chatroom-flexbox">
-                    <h3>Chatroomnaam</h3>
-                    <p>Dit is een preview van een bericht...</p>
-                </div>
-            </li>
-            <li class="chatroom-list-item">
-                <img class="chatroom-list-image" alt="" src="~/img/placeholders/group.svg"/>
-                <div class="chatroom-flexbox">
-                    <h3>Chatroomnaam</h3>
-                    <p>Dit is een preview van een bericht...</p>
-                </div>
-            </li>
-            <li class="chatroom-list-item">
-                <img class="chatroom-list-image" alt="" src="~/img/placeholders/group.svg"/>
-                <div class="chatroom-flexbox">
-                    <h3>Chatroomnaam</h3>
-                    <p>Dit is een preview van een bericht...</p>
-                </div>
-            </li>
-            <li class="chatroom-list-item">
-                <img class="chatroom-list-image" alt="" src="~/img/placeholders/group.svg"/>
-                <div class="chatroom-flexbox">
-                    <h3>Chatroomnaam</h3>
-                    <p>Dit is een preview van een bericht...</p>
-                </div>
-            </li>
-            <li class="chatroom-list-item">
-                <img class="chatroom-list-image" alt="" src="~/img/placeholders/group.svg"/>
-                <div class="chatroom-flexbox">
-                    <h3>Chatroomnaam</h3>
-                    <p>Dit is een preview van een bericht...</p>
-                </div>
-            </li>
-            <li class="chatroom-list-item">
-                <img class="chatroom-list-image" alt="" src="~/img/placeholders/group.svg"/>
-                <div class="chatroom-flexbox">
-                    <h3>Chatroomnaam</h3>
-                    <p>Dit is een preview van een bericht...</p>
-                </div>
-            </li>
+            @{
+                foreach (ChatroomViewModel room in Model.Rooms)
+                {
+                    if (room.ProfilePicture == "")
+                    {
+                        room.ProfilePicture = "/img/placeholders/group.svg";
+                    }
+                    <li class="chatroom-list-item">
+                        <img class="chatroom-list-image" alt="" src="@room.ProfilePicture"/>
+                        <div class="chatroom-flexbox">
+                            <h3>@room.Name</h3>
+                            <p>@room.Password</p>
+                        </div>
+                    </li>
+                }
+            }
             <li class="chatroom-such-empty">
                 <img src="~/img/placeholders/such-empty-2.svg"/>
                 <p>Wow, such empty</p>

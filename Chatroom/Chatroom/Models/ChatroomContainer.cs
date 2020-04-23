@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using Chatroom.Dataset;
+using Chatroom.Models.ViewModels;
 
 namespace Chatroom.Models
 {
@@ -19,24 +20,25 @@ namespace Chatroom.Models
             this._currentUser = givenUser;
         }
 
-        private static int FetchRooms()
+        private static ChatroomContainerViewModel FetchRooms()
         {
+            ChatroomContainerViewModel roomsList = new ChatroomContainerViewModel();
             string SQL = "SELECT * FROM [Chatroom]";
             List<KeyValuePair<object, object>> parameters = new List<KeyValuePair<object, object>>();
-
-            // DataTable dt = ExecuteQuery(SQL);
             DataTable dt = new BaseMssqlContext().ExecuteQuery(SQL, parameters);
-
-            return dt.Columns.Count;
+            roomsList.Rooms = new List<ChatroomViewModel>();
+            for (int j = 0; j < dt.Rows.Count; j++)
+            {
+                roomsList.Rooms.Add(DataSetParser.DatasetToChatroom(dt, j));
+            }
+            ChatroomViewModel result = DataSetParser.DatasetToChatroom(dt, 0);
+            return roomsList;
         }
 
-        public void ListAllChatrooms()
+        public ChatroomContainerViewModel ListAllChatrooms()
         {
             var result = FetchRooms();
-            // foreach (var VARIABLE in Chatrooms)
-            // {
-            //     //display chatrooms in list
-            // }
+            return result;
         }
     }
 }

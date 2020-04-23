@@ -11,7 +11,7 @@ namespace Chatroom.Dataset
 {
     public class BaseMssqlContext
     {
-        private string _connect;
+        private readonly string _connect;
         public BaseMssqlContext()
         {
             var configuration = GetConfiguration();
