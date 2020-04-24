@@ -37,11 +37,11 @@
                     {
                         room.ProfilePicture = "/img/placeholders/group.svg";
                     }
-                    <li class="chatroom-list-item">
+                    <li class="chatroom-list-item" data-roomid="@room.Id" onclick="ChangeChatDisplay(this.dataset.roomid)">
                         <img class="chatroom-list-image" alt="" src="@room.ProfilePicture"/>
                         <div class="chatroom-flexbox">
                             <h3>@room.Name</h3>
-                            <p>@room.Password</p>
+                            <p>@room.NiceName</p>
                         </div>
                     </li>
                 }
@@ -103,3 +103,25 @@
     <div class="edit-personal-details-area"></div>
     <div class="leave-chatroom-area"></div>
 </div>
+<script type="text/javascript">
+function ChangeChatDisplay(RoomId) {
+    //create AJAX call to check access
+    console.log(RoomId);
+    let url = '@Url.Action("CheckAccessToChatroom", "Chat")?givenRoomId=' + RoomId + '&givenUserId=1';
+    $.ajax({
+        method: "POST",
+        url: url,
+        data: {givenRoomId: RoomId, givenUserId: 1},
+        datatype: "text",
+        beforeSend: function () {
+            console.log("Versturen...")
+        },
+        complete: function (response, textStatus, jqXHR) {
+            console.log(response, textStatus, jqXHR);
+        },
+        error: function(msg) {
+            console.log(msg);
+        }
+    })
+}
+</script>

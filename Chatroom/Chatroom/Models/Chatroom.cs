@@ -26,6 +26,11 @@ namespace Chatroom.Models
             this._picture = givenImage;
         }
 
+        public int GetId()
+        {
+            return _id;
+        }
+
         public bool CheckAccess(int givenUser)
         {
             return _ = (_memberList.Contains(givenUser)) ? true : false;

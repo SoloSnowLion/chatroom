@@ -31,4 +31,6 @@ $(document).ready(function () {
         chatroomConstructArea = $(".chatroom-construct-area").outerHeight();
         chatroomWindow.css('height', windowHeight - (chatroomTopBar + chatroomConstructArea));
     })
+
+
 });
