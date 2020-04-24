@@ -27,20 +27,20 @@ namespace Chatroom.Controllers
         [HttpPost]
         public bool CheckAccessToChatroom(int givenRoomId, int givenUserId)
         {
-            ChatroomContainer temp = containerMain;
-            bool returnVal = new bool();
-            foreach (Models.Chatroom variable in containerMain.Chatrooms)
+            bool returnVal = false;
+            string SQL =
+                "SELECT user_id FROM [Chatroom_User] WHERE user_id = @User_Id AND chatroom_id = @Chatroom_Id AND access_verified = 1";
+            List<KeyValuePair<object, object>> param = new List<KeyValuePair<object, object>>();
+            param.Add(new KeyValuePair<object, object>("Chatroom_Id", givenRoomId));
+            param.Add(new KeyValuePair<object, object>("User_Id", givenUserId));
+            DataTable dt = new BaseMssqlContext().ExecuteQuery(SQL, param);
+            for (int i = 0; i < dt.Rows.Count; i++)
             {
-                if (variable.GetId() == givenRoomId)
+                if (Convert.ToInt32(dt.Rows[0][0]) == givenUserId)
                 {
-                    returnVal = variable.CheckAccess(givenUserId);
-                }
-                else
-                {
-                    returnVal = false;
+                    returnVal = true;
                 }
             }
-
             return returnVal;
         }
     }
