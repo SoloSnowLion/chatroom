@@ -116,11 +116,17 @@ function ChangeChatDisplay(RoomId) {
         beforeSend: function () {
             console.log("Versturen...")
         },
-        complete: function (response, textStatus, jqXHR) {
-            console.log(response, textStatus, jqXHR);
+        complete: function (response) {
+            console.log(response);
+            if(response.responseText === "true"){
+                alert("U heeft toegang tot deze chatroom.");
+        } else {
+                alert("U heeft geen toegang tot deze chatroom.");
+        }
         },
         error: function(msg) {
             console.log(msg);
+            alert("Er is een fout opgetreden tijdens uw verzoek. Probeer het nog een keer.")
         }
     })
 }
