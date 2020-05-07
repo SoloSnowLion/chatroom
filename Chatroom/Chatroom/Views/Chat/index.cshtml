@@ -106,7 +106,6 @@
 <script type="text/javascript">
 function ChangeChatDisplay(RoomId) {
     //create AJAX call to check access
-    console.log(RoomId);
     let url = '@Url.Action("CheckAccessToChatroom", "Chat")?givenRoomId=' + RoomId + '&givenUserId=1';
     $.ajax({
         method: "POST",
