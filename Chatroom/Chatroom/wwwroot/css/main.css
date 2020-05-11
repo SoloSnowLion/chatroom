@@ -36,6 +36,10 @@
     border-radius: 50%;
 }
 
+.side-column .user-details .status-current-user {
+    margin: 0;
+}
+
 .top-config-bar {
     width: 100%;
     display: block;
@@ -204,6 +208,7 @@
     margin-right: 10px;
     flex: 1;
     padding: 8px 20px;
+    resize: none;
 }
 
 .main-content .chatroom-construct-area .send-message-button {
@@ -222,7 +227,7 @@
     padding: 15px;
 }
 
-.main-content .chatroom-message-area ul{
+.main-content .chatroom-message-area ul {
     margin: 0;
     padding: 0;
 }
@@ -236,12 +241,11 @@
 }
 
 .main-content .chatroom-message-area .message-bubble.placeholder-message {
-    /*width: 550px;*/
     max-width: 550px;
     width: 100%;
     height: 50px;
     background-size: 1100px 50px;
-    background: linear-gradient(90deg, #707070 0%, #b9b9b9 49%, #b9b9b9 51%, #707070 100%);
+    background: linear-gradient(90deg, #707070 0%, #707070 45%, #b9b9b9 50%, #707070 55%, #707070 100%);
     background-position-x: 0;
     margin-bottom: 15px;
     border-radius: 15px;
@@ -250,9 +254,12 @@
 }
 
 @keyframes LoadAnimation {
-    0%{background-position-x:0}
-    100%{background-position-x:1100px}
-    /*100%{background-position-x:0}*/
+    0% {
+        background-position-x: 0
+    }
+    100% {
+        background-position-x: 1100px
+    }
 }
 
 .main-content .chatroom-message-area .message-bubble.current-user {

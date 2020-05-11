@@ -1,18 +1,23 @@
-@using ChatroomContainerViewModel = Chatroom.Models.ViewModels.ChatroomContainerViewModel
-@using Chatroom.Models.ViewModels
-@model ChatroomContainerViewModel;
+@using Chatroom.Models.ViewModels;
+@model MegaViewModel;
 @{
     ViewData["Title"] = "Hoofdscherm";
     Layout = "_Mainscreen";
 }
 
 <div class="side-column">
-    <div class="user-details">
-        <img class="image-current-user" src="~/img/placeholders/user.svg" alt=""/>
+    <div class="user-details" id="currentUserBar" data-currentuser="@Model.UserViewModel.Id">
+        @{
+            if (Model.UserViewModel.ProfilePicture == "")
+            {
+                Model.UserViewModel.ProfilePicture = "/img/placeholders/user.svg";
+            }
+        }
+        <img class="image-current-user" src="@Model.UserViewModel.ProfilePicture" alt=""/>
         <div class="right-side">
-            <h3 class="username-current-user">SoloSnowLion</h3>
-            <p class="email-current-user">435490@student.fontys.nl</p>
-            <p class="status-current-user">Buiten bereik van verantwoordelijkheden en op kamer temperatuur houden.</p>
+            <h3 class="username-current-user">@Model.UserViewModel.Username</h3>
+            <p class="email-current-user">@Model.UserViewModel.Email</p>
+            <p class="status-current-user">@Model.UserViewModel.Status</p>
         </div>
         <div class="clearfix"></div>
     </div>
@@ -31,7 +36,7 @@
                 </div>
             </li>
             @{
-                foreach (ChatroomViewModel room in Model.Rooms)
+                foreach (ChatroomViewModel room in Model.ContainerViewModel.Rooms)
                 {
                     if (room.ProfilePicture == "")
                     {
@@ -107,7 +112,8 @@
 function ChangeChatDisplay(RoomId) {
     //create AJAX call to check access
     console.log(RoomId);
-    let url = '@Url.Action("CheckAccessToChatroom", "Chat")?givenRoomId=' + RoomId + '&givenUserId=1';
+    let userID = document.getElementById("currentUserBar").dataset.currentuser;
+    let url = '@Url.Action("CheckAccessToChatroom", "Chat")?givenRoomId=' + RoomId + '&givenUserId=' + userID;
     $.ajax({
         method: "POST",
         url: url,

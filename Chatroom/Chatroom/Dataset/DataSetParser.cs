@@ -18,5 +18,19 @@ namespace Chatroom.Dataset
                 Administrator = Convert.ToInt32(set.Rows[rowIndex][6]),
             };
         }
+
+        public static UserViewModel DatasetToUser(DataTable set, int rowIndex)
+        {
+            return new UserViewModel()
+            {
+                Id = Convert.ToInt32(set.Rows[rowIndex][0]),
+                Email = set.Rows[rowIndex][6].ToString(),
+                Name = set.Rows[rowIndex][1].ToString(),
+                ProfilePicture = set.Rows[rowIndex][4].ToString(),
+                Status = set.Rows[rowIndex][7].ToString(),
+                Username = set.Rows[rowIndex][2].ToString(),
+                Verified = Convert.ToBoolean(set.Rows[rowIndex][5]),
+            };
+        }
     }
 }

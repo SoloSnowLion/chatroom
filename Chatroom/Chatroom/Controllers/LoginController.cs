@@ -48,38 +48,7 @@ namespace Chatroom.Controllers
         {
             return View();
         }
-
-        public bool CheckUsername(string givenUsername)
-        {
-            bool temp;
-            if (login.CheckUsername(givenUsername))
-            {
-                ViewData["TotalData"] = "Username klopt.";
-                temp = true;
-            }
-            else
-            {
-                temp = false;
-            }
-
-            return temp;
-        }
-
-        public bool CheckPassword(string givenPassword)
-        {
-            bool temp;
-            if (login.CheckPassword(givenPassword))
-            {
-                //ViewData[""]
-                temp = true;
-                login.CreateSession();
-            }
-            else
-            {
-                temp = false;
-            }
-
-            return temp;
-        }
+        
+        
     }
 }

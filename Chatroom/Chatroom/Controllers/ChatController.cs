@@ -11,17 +11,24 @@ using Microsoft.Extensions.Configuration;
 using System.Data.SqlClient;
 using Chatroom.Dataset;
 using Chatroom.Models;
+using Chatroom.Models.ViewModels;
 
 namespace Chatroom.Controllers
 {
     public class ChatController : Controller
     {
         ChatroomContainer containerMain = new ChatroomContainer(1);
+        User currentUser = new User(1);
+        MegaViewModel megaMain = new MegaViewModel();
 
         // GET
         public IActionResult Index()
         {
-            return View(containerMain.ListAllChatrooms());
+            // ViewBag.Chatrooms = containerMain.ListAllChatrooms();
+            // ViewBag.User = currentUser.LoadUserData();
+            megaMain.ContainerViewModel = containerMain.ListAllChatrooms();
+            megaMain.UserViewModel = currentUser.LoadUserData();
+            return View(megaMain);
         }
 
         [HttpPost]
@@ -41,6 +48,7 @@ namespace Chatroom.Controllers
                     returnVal = true;
                 }
             }
+
             return returnVal;
         }
     }

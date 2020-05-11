@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using Chatroom.Dataset;
+using Chatroom.Models.ViewModels;
 
 namespace Chatroom.Models
 {
@@ -20,9 +23,22 @@ namespace Chatroom.Models
             this.Id = TheId;
         }
 
-        public void LoadUserData()
+        public UserViewModel LoadUserData()
         {
             //Methode om gegevens uit de database te halen.
+            string SQL = "SELECT * FROM [User] WHERE id = @UserId";
+            List<KeyValuePair<object, object>> param = new List<KeyValuePair<object, object>>();
+            param.Add(new KeyValuePair<object, object>("UserId", this.Id));
+            DataTable dataTable = new BaseMssqlContext().ExecuteQuery(SQL, param);
+            UserViewModel result = DataSetParser.DatasetToUser(dataTable, 0);
+            this.Username = result.Username;
+            this.Name = result.Name;
+            this.Status = result.Status;
+            this.Email = result.Email;
+            this.ProfilePicture = result.ProfilePicture;
+            this.verified = result.Verified;
+
+            return result;
         }
 
         public string LoadSettings()
