@@ -13,6 +13,7 @@ namespace Chatroom.Models
     public class ChatroomContainer
     {
         public List<Chatroom> Chatrooms = new List<Chatroom>();
+        public ChatroomContainerViewModel DisplayChatrooms = new ChatroomContainerViewModel();
         private int _currentUser;
 
         public ChatroomContainer(int givenUser)
@@ -20,11 +21,7 @@ namespace Chatroom.Models
             this._currentUser = givenUser;
         }
 
-        private static void FillList()
-        {
-        }
-
-        private ChatroomContainerViewModel FetchRooms()
+        public ChatroomContainerViewModel FetchRooms()
         {
             ChatroomContainerViewModel roomsList = new ChatroomContainerViewModel();
             string SQL = "SELECT * FROM [Chatroom]";
@@ -61,16 +58,27 @@ namespace Chatroom.Models
             foreach (ChatroomViewModel chatView in rooms.Rooms)
             {
                 Chatrooms.Add(new Chatroom(chatView.Id, chatView.Name, chatView.NiceName, chatView.Administrator,
-                    chatView.MemberList, chatView.ProfilePicture));
+                    chatView.MemberList, chatView.ProfilePicture, chatView.MaxMembers));
             }
         }
 
         public ChatroomContainerViewModel ListAllChatrooms()
         {
-            var result = FetchRooms();
+            // var result = FetchRooms();
+            foreach (var room in Chatrooms)
+            {
+                ChatroomViewModel temp = new ChatroomViewModel();
+                temp.Id = room.Id;
+                temp.Name = room.Name;
+                temp.Administrator = room.Admin;
+                temp.MemberList = room.MemberList;
+                temp.NiceName = room.FriendlyName;
+                temp.MaxMembers = room.MaxMembers;
+                temp.ProfilePicture = room.Picture;
+                DisplayChatrooms.Rooms.Add(temp);
+            }
 
-
-            return result;
+            return this.DisplayChatrooms;
         }
     }
 }

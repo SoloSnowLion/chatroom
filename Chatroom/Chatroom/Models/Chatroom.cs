@@ -8,37 +8,39 @@ namespace Chatroom.Models
 {
     public class Chatroom
     {
-        private int _id;
-        private string _name;
-        private string _friendlyName;
-        private int _admin;
-        private List<int> _memberList;
-        private string _picture;
+        public int Id { get; private set; }
+        public string Name { get; private set; }
+        public string FriendlyName { get; private set; }
+        public int Admin { get; private set; }
+        public List<int> MemberList { get; private set; }
+        public string Picture { get; private set; }
+        public int MaxMembers { get; private set; }
 
         public Chatroom(int givenId, string givenName, string givenFn, int givenAdmin, List<int> givenMembers,
-            string givenImage)
+            string givenImage, int givenMaxMembers)
         {
-            this._id = givenId;
-            this._name = givenName;
-            this._friendlyName = givenFn;
-            this._admin = givenAdmin;
-            this._memberList = givenMembers;
-            this._picture = givenImage;
+            this.Id = givenId;
+            this.Name = givenName;
+            this.FriendlyName = givenFn;
+            this.Admin = givenAdmin;
+            this.MemberList = givenMembers;
+            this.Picture = givenImage;
+            this.MaxMembers = givenMaxMembers;
         }
 
         public int GetId()
         {
-            return _id;
+            return Id;
         }
 
         public bool CheckAccess(int givenUser)
         {
-            return _ = (_memberList.Contains(givenUser)) ? true : false;
+            return _ = (MemberList.Contains(givenUser)) ? true : false;
         }
 
         public override string ToString()
         {
-            return this._name + ", Aantal leden: " + Convert.ToString(_memberList.Count);
+            return this.Name + ", Aantal leden: " + Convert.ToString(MemberList.Count);
         }
     }
 }

@@ -16,20 +16,31 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Chatroom.Controllers
 {
-    public class ChatController : Controller
+    public class AjaxController : Controller
     {
         ChatroomContainer containerMain; //= new ChatroomContainer(1);
 
-        public ChatController()
+        public AjaxController()
         {
             this.containerMain = new ChatroomContainer(1);
             this.containerMain.FetchRooms();
         }
 
-        // GET
-        public IActionResult Index()
+        //GETREQUEST
+        [HttpPost]
+        public bool CheckAccessToChatroom(int givenRoomId, int givenUserId)
         {
-            return View(containerMain.ListAllChatrooms());
+            ChatroomContainer temp = containerMain;
+            bool returnVal = default;
+            foreach (Models.Chatroom variable in temp.Chatrooms)
+            {
+                if (variable.GetId() == givenRoomId)
+                {
+                    returnVal = variable.CheckAccess(givenUserId);
+                }
+            }
+
+            return returnVal;
         }
     }
 }
