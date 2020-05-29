@@ -2,8 +2,6 @@ namespace Chatroom.Models
 {
     public class Login
     {
-        private string username;
-        private string password;
         //private <something> sessionId;
 
         public bool CheckUsername(string givenUsername)
